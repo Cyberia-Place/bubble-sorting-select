@@ -1,1 +1,14 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+.cardpoker {
+  width: 17%;
+  height: 300px;
+}
+
+.symbol {
+  font-size: 50px;
+}
+
+.letter {
+  font-size: 50px;
+}
