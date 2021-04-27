@@ -69,24 +69,24 @@ function generateCard() {
         document.querySelector(".container").innerHTML += card;
       }
 
-      if ((letter = "J")) {
+      if (letter == "J") {
         letter = "11";
         arr.push([card, letter]);
-      } else if ((letter = "Q")) {
+      } else if (letter == "Q") {
         letter = "12";
         arr.push([card, letter]);
-      } else if ((letter = "Q")) {
+      } else if (letter == "K") {
         letter = "13";
         arr.push([card, letter]);
-      } else if ((letter = "A")) {
+      } else if (letter == "A") {
         letter = "1";
         arr.push([card, letter]);
       } else {
         arr.push([card, letter]);
       }
-      console.log(arr);
     }
   }
+  console.log(arr);
 }
 
 let bubbleSort = () => {
@@ -95,7 +95,8 @@ let bubbleSort = () => {
     let index = 0;
     while (index < wall) {
       //compare the adjacent positions, if the right one is bigger, we have to swap
-      if (arr[index][0] > arr[index + 1][0]) {
+      if (parseInt(arr[index][1]) > parseInt(arr[index + 1][1])) {
+        console.log(arr[index][1], arr[index + 1][1]);
         let aux = arr[index];
         arr[index] = arr[index + 1];
         arr[index + 1] = aux;
@@ -104,15 +105,14 @@ let bubbleSort = () => {
     }
     wall--; //decrease the wall for optimization
   }
+  //   console.log(arr);
   return arr;
 };
 
-console.log(bubbleSort(arr));
-
 function sortCards() {
+  document.querySelector(".container").innerHTML = "";
   for (let i of bubbleSort(arr)) {
-    console.log(i);
-    document.querySelector(".container").innerHTML = i[0];
+    document.querySelector(".container").innerHTML += i[0];
   }
 }
 
