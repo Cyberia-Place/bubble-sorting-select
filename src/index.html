@@ -17,9 +17,8 @@
   <body class="bg-success text-center">
     <!-- BOTON E INPUT QUE ESPECIFICAN CANTIDAD DE CARTAS -->
     <form>
-      <label>Número de cartas:</label>
+      <label>Original:</label>
       <input id="input" type="number" />
-      <button id="button1" type="button" class="btn btn-danger">Send</button>
     </form>
 
     <!-- BOTON QUE MUESTRA CARTA -->
@@ -32,7 +31,11 @@
       Sort
     </button>
 
-    <!-- CARTA -->
-    <div class="container d-flex justify-content-center"></div>
+    <!-- CARTAS ORIGINAL-->
+    <div id="original" class="container d-flex justify-content-center"></div>
+
+    <!-- CARTAS BUBBLE LOG -->
+    <h1>Bubble log:</h1>
+    <div id="bubble-log" class="container"></div>
   </body>
 </html>

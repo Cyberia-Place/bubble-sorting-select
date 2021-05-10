@@ -7,8 +7,8 @@ import "./assets/img/4geeks.ico";
 
 // BOTON PARA ENVIAR EL INPUT
 var nCards = 0;
-var btn1 = document.getElementById("button1");
-btn1.addEventListener("click", () => {
+var input = document.getElementById("input");
+input.addEventListener("change", () => {
   nCards = document.getElementById("input").value;
 });
 
@@ -35,7 +35,7 @@ function generateCard() {
     "K"
   ];
 
-  document.querySelector(".container").innerHTML = "";
+  document.querySelector("#original").innerHTML = "";
   let arrayOfCards = [];
   arr = [];
 
@@ -49,24 +49,24 @@ function generateCard() {
       let card = "";
       if (symbol == "♦" || symbol == "♥") {
         card = `<div class="card my-3 rounded cardpoker mx-2">
-        <div class="card-body d-flex justify-content-between display-1">
-          <div class="symbol align-self-start" style="color: red"><p>${symbol}</p></div>
-          <div class="letter align-self-center" style="color: red"><p>${letter}</p></div>
-          <div class="symbol align-self-end" style="color: red"><p>${symbol}</p></div>
+        <div class="d-flex justify-content-between flex-column mx-2">
+          <div class="symbol align-self-start" style="color: red">${symbol}</div>
+          <div class="letter align-self-center" style="color: red">${letter}</div>
+          <div class="symbol align-self-end" style="color: red">${symbol}</div>
         </div>
       </div>`;
 
-        document.querySelector(".container").innerHTML += card;
+        document.querySelector("#original").innerHTML += card;
       } else {
         card = `<div class="card my-3 rounded cardpoker mx-2">
-        <div class="card-body d-flex justify-content-between display-1">
-          <div class="symbol align-self-start" style="color: black"><p>${symbol}</p></div>
-          <div class="letter align-self-center" style="color: black"><p>${letter}</p></div>
-          <div class="symbol align-self-end" style="color: black"><p>${symbol}</p></div>
+        <div class="d-flex justify-content-between flex-column mx-2">
+          <div class="symbol align-self-start" style="color: black">${symbol}</div>
+          <div class="letter align-self-center" style="color: black">${letter}</div>
+          <div class="symbol align-self-end" style="color: black">${symbol}</div>
         </div>
       </div>`;
 
-        document.querySelector(".container").innerHTML += card;
+        document.querySelector("#original").innerHTML += card;
       }
 
       if (letter == "J") {
@@ -86,39 +86,43 @@ function generateCard() {
       }
     }
   }
-  console.log(arr);
 }
 
 let bubbleSort = () => {
+  document.querySelector("#bubble-log").innerHTML = ""; // Esto vacia y vuelve a rellenar el div donde va el bubble log
+  let allCards = ""; // Donde voy a guardar el html de todas las cartas en cada iteracion para el bubble log
+  let contador = 0; // Donde registro la cantidad de reordenamientos hechos
   let wall = arr.length - 1; //we start the wall at the end of the array
+
   while (wall > 0) {
     let index = 0;
     while (index < wall) {
       //compare the adjacent positions, if the right one is bigger, we have to swap
       if (parseInt(arr[index][1]) > parseInt(arr[index + 1][1])) {
-        console.log(arr[index][1], arr[index + 1][1]);
         let aux = arr[index];
         arr[index] = arr[index + 1];
         arr[index + 1] = aux;
+
+        // Imprime la lista de cartas en cada nuevo movimiento del sort
+        for (let i of arr) {
+          allCards += i[0];
+        }
+        document.querySelector(
+          "#bubble-log"
+        ).innerHTML += `<div class="d-flex justify-content-center"><h1>${contador}</h1>${allCards}</div>`;
+        allCards = "";
+        contador += 1;
       }
+
       index++;
     }
     wall--; //decrease the wall for optimization
   }
-  //   console.log(arr);
-  return arr;
 };
-
-function sortCards() {
-  document.querySelector(".container").innerHTML = "";
-  for (let i of bubbleSort(arr)) {
-    document.querySelector(".container").innerHTML += i[0];
-  }
-}
 
 // BOTON PARA ORDENAR LAS CARTAS
 var btn3 = document.getElementById("button3");
-btn3.addEventListener("click", sortCards);
+btn3.addEventListener("click", bubbleSort);
 
 // BOTON PARA MOSTRAR LAS CARTAS
 var btn = document.getElementById("button2");
