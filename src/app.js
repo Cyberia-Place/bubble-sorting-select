@@ -112,6 +112,8 @@ let bubbleSort = () => {
         ).innerHTML += `<div class="d-flex justify-content-center"><h1>${contador}</h1>${allCards}</div>`;
         allCards = "";
         contador += 1;
+
+        console.log(arr);
       }
 
       index++;
