@@ -88,40 +88,6 @@ function generateCard() {
   }
 }
 
-// let bubbleSort = () => {
-//     document.querySelector("#bubble-log").innerHTML = ""; // Esto vacia y vuelve a rellenar el div donde va el bubble log
-//     let allCards = ""; // Donde voy a guardar el html de todas las cartas en cada iteracion para el bubble log
-//     let contador = 0; // Donde registro la cantidad de reordenamientos hechos
-//     let wall = arr.length - 1; //we start the wall at the end of the array
-
-//     while (wall > 0) {
-//         let index = 0;
-//         while (index < wall) {
-//             //compare the adjacent positions, if the right one is bigger, we have to swap
-//             if (parseInt(arr[index][1]) > parseInt(arr[index + 1][1])) {
-//                 let aux = arr[index];
-//                 arr[index] = arr[index + 1];
-//                 arr[index + 1] = aux;
-
-//                 // Imprime la lista de cartas en cada nuevo movimiento del sort
-//                 for (let i of arr) {
-//                     allCards += i[0];
-//                 }
-//                 document.querySelector(
-//                     "#bubble-log"
-//                 ).innerHTML += `<div class="d-flex justify-content-center"><h1>${contador}</h1>${allCards}</div>`;
-//                 allCards = "";
-//                 contador += 1;
-
-//                 console.log(arr);
-//             }
-
-//             index++;
-//         }
-//         wall--; //decrease the wall for optimization
-//     }
-// };
-
 const selectSort = () => {
   let min = 0;
   document.querySelector("#bubble-log").innerHTML = ""; // Esto vacia y vuelve a rellenar el div donde va el bubble log
